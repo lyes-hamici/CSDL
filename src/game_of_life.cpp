@@ -1,5 +1,6 @@
 #include <raylib.h>
 #include "game_of_life.hpp"
+#include <cstdlib>
 
 // Game Variables
 bool grid[rows][columns] = {false};
@@ -9,13 +10,17 @@ bool grid[rows][columns] = {false};
  *
  * This function initializes the game by setting up the initial state of the grid with random values.
  */
-void initializeGame()
-{
-    for (int i{0}; i < rows; i++)
-    {
-        for (int j{0}; j < columns; j++)
-        {
-            grid[i][j] = GetRandomValue(0, 1);
+void initializeGame() {
+    for (int i{0}; i < rows; i++) {
+        for (int j{0}; j < columns; j++) {
+            // Obtient un nombre aléatoire entre 0 et 99
+            int randomValue = rand() % 100;
+            // Si le nombre est inférieur à 30, on attribue 1, sinon 0
+            if (randomValue <= 10) {
+                grid[i][j] = 1;
+            } else {
+                grid[i][j] = 0;
+            }
         }
     }
 }
