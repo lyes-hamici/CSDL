@@ -20,7 +20,7 @@ int main()
         if (isPlay || frameCount == 0)
         {
             updateGame;
-            frameCount = -1;
+            frameCount--;
         }
         BeginDrawing();
         drawGame();
