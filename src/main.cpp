@@ -4,7 +4,7 @@
 
 bool isPlay = false;
 int frameCount = -1;
-int UpdatesPerSecond = 10;
+int UpdatesPerSecond = 60;
 
 const int screenWidth = (columns)*cell_size;
 const int screenHeight = (rows)*cell_size + BottomMargin;

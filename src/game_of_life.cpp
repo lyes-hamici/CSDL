@@ -59,9 +59,9 @@ void initializePatternGame()
     int startRow = centerRow - pattern.size() / 2;
     int startColumn = centerColumn - pattern[0].size() / 2;
 
-    for (int i = 0; i < pattern.size(); i++)
+    for (std::vector<bool>::size_type i = 0; i < pattern.size(); i++)
     {
-        for (int j = 0; j < pattern[i].size(); j++)
+        for (std::vector<bool>::size_type j = 0; j < pattern[i].size(); j++)
         {
             grid[startRow + i][startColumn + j] = pattern[i][j];
         }
