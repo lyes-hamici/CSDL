@@ -21,6 +21,7 @@
 #if 0
 #define RLUTIL_USE_ANSI
 #endif
+#include <raylib.h>
 
 /// Define: RLUTIL_STRING_T
 /// Define/typedef this to your preference to override rlutil's string type.

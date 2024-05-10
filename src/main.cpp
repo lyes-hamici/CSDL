@@ -1,7 +1,6 @@
 #include <raylib.h>
 #include "game_of_life.hpp"
 #include <iostream>
-#include "rlutil.h"
 
 bool isPlay = false;
 int frameCount = -1;
@@ -25,14 +24,14 @@ Rectangle rightButtons[3] = {
 // Rectangle centerButtons[2] = {
 //     {screenWidth - 360,screenHeight - 50, 90, 40},
 //     {screenWidth - 450, screenHeight - 50, 90, 40}};
-void openPatternFile()
-{
-    std::string filepath = tinyfd_openFileDialog("Choose a pattern file", "", 0, NULL, "Text files (*.txt)", 0);
-    if (filepath != "")
-    {
-        initializePatternGame(filepath.c_str());
-    }
-}
+// void openPatternFile()
+// {
+//     std::string filepath = tinyfd_openFileDialog("Choose a pattern file", "", 0, NULL, "Text files (*.txt)", 0);
+//     if (filepath != "")
+//     {
+//         initializePatternGame(filepath.c_str());
+//     }
+// }
 
 int main()
 {
@@ -73,7 +72,7 @@ int main()
                 }
                 else if (i == 1) // Pattern load
                 {
-                    openPatternFile();
+                    // openPatternFile();
                 }
                 else if (i == 2) // Clear grid
                 {
