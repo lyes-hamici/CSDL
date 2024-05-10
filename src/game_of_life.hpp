@@ -9,7 +9,7 @@ const int BottomMargin = 60;
 
 void resetGrid();
 void initializeRandomGame();
-void initializePatternGame();
+void initializePatternGame(const std::string &filepath);
 void updateGame();
 void drawGame();
 void drawGrid();

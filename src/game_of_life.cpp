@@ -46,13 +46,13 @@ void initializeRandomGame()
  *
  * This function initializes the game by setting up the initial state of the grid with a pattern stored into a txt file.
  */
-void initializePatternGame()
+void initializePatternGame(const std::string &filepath)
 {
 
     // Reseting the grid
     resetGrid();
 
-    std::vector<std::vector<bool>> pattern = readPattern("patterns/pattern1.txt"); // Return a 2D vector
+    std::vector<std::vector<bool>> pattern = readPattern(filepath); // Return a 2D vector
 
     int centerRow = rows / 2;
     int centerColumn = columns / 2;

@@ -2,6 +2,7 @@
 #include "game_of_life.hpp"
 #include <iostream>
 
+
 bool isPlay = false;
 int frameCount = -1;
 int UpdatesPerSecond = 60;
