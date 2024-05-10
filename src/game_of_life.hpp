@@ -1,5 +1,6 @@
 #ifndef GAME_OF_LIFE_H
 #define GAME_OF_LIFE_H
+#include <string>
 
 const int rows = 80;
 const int columns = 80;

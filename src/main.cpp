@@ -2,12 +2,13 @@
 #include "game_of_life.hpp"
 #include <iostream>
 
+bool isPlay = false;
+int frameCount = -1;
+int UpdatesPerSecond = 10;
+
 const int screenWidth = (columns)*cell_size;
 const int screenHeight = (rows)*cell_size + BottomMargin;
 
-bool isPlay = false;
-int frameCount = -1;
-int UpdatePerSecond = 120;
 // Buttons on the left {play, stop and next frame}
 Rectangle leftButtons[3] = {
     {10, screenHeight - 50, 90, 40},
@@ -27,7 +28,7 @@ Rectangle rightButtons[3] = {
 int main()
 {
     InitWindow(screenWidth, screenHeight, "Game of Life - ORTHLY");
-    SetTargetFPS(UpdatePerSecond);
+    SetTargetFPS(UpdatesPerSecond);
     while (!WindowShouldClose())
     {
         if (isPlay || frameCount == 0)
@@ -41,15 +42,15 @@ int main()
         {
             if (CheckCollisionPointRec(GetMousePosition(), leftButtons[i]) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
             {
-                if (i == 0) //Play
+                if (i == 0) // Play
                 {
                     isPlay = true;
                 }
-                else if (i == 1) //Stop
+                else if (i == 1) // Stop
                 {
                     isPlay = false;
                 }
-                else if (i == 2) //Next
+                else if (i == 2) // Next
                 {
                     frameCount = 0;
                 }
@@ -57,7 +58,7 @@ int main()
 
             if (CheckCollisionPointRec(GetMousePosition(), rightButtons[i]) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
             {
-                if (i == 0) //Random
+                if (i == 0) // Random
                 {
                     initializeRandomGame();
                 }
@@ -70,6 +71,17 @@ int main()
                 }
             }
         }
+        if (IsKeyPressed(KEY_RIGHT))
+        {
+            UpdatesPerSecond = std::min(UpdatesPerSecond + 10, 120);
+            SetTargetFPS(UpdatesPerSecond);
+        }
+
+        if (IsKeyPressed(KEY_LEFT))
+        {
+            UpdatesPerSecond = std::max(UpdatesPerSecond - 10, 1);
+            SetTargetFPS(UpdatesPerSecond);
+        }
 
         BeginDrawing();
         ClearBackground(RAYWHITE);
@@ -80,9 +92,15 @@ int main()
         {
             DrawRectangleRec(leftButtons[i], LIGHTGRAY);
             DrawRectangleRec(rightButtons[i], LIGHTGRAY);
-            DrawText((i == 0) ? "play" : (i == 1) ? "stop" : "next", leftButtons[i].x + 10, leftButtons[i].y + 10, 20, DARKGRAY);
-            DrawText((i == 0) ? "random" : (i == 1) ? "pattern" : "clear", rightButtons[i].x + 10, rightButtons[i].y + 10, 20, DARKGRAY);
+            DrawText((i == 0) ? "play" : (i == 1) ? "stop"
+                                                  : "next",
+                     leftButtons[i].x + 10, leftButtons[i].y + 10, 20, DARKGRAY);
+            DrawText((i == 0) ? "random" : (i == 1) ? "pattern"
+                                                    : "clear",
+                     rightButtons[i].x + 10, rightButtons[i].y + 10, 20, DARKGRAY);
         }
+
+        DrawFPS(10, 10);
 
         EndDrawing();
     }
