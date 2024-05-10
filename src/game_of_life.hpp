@@ -4,7 +4,7 @@
 const int rows = 80;
 const int columns = 80;
 const int cell_size = 10;
-const int BottomMargin = 150;
+const int BottomMargin = 60;
 
 void resetGrid();
 void initializeRandomGame();
