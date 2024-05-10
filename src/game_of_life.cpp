@@ -75,7 +75,7 @@ void initializePatternGame()
  */
 void updateGame()
 {
-    initializeRandomGame();
+    initializeRandomGame(); // Erase this, this is completly for test purposes
 }
 
 /**
