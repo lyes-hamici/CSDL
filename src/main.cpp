@@ -5,25 +5,29 @@
 const int screenWidth = (columns)*cell_size;
 const int screenHeight = (rows)*cell_size + BottomMargin;
 
+bool isPlay = false;
+int frameCount = -1;
+int UpdatePerSecond = 120;
 // Buttons on the left {play, stop and next frame}
 Rectangle leftButtons[3] = {
-    {10, screenHeight - 50, 80, 40},
-    {100, screenHeight - 50, 80, 40},
-    {190, screenHeight - 50, 80, 40}};
+    {10, screenHeight - 50, 90, 40},
+    {110, screenHeight - 50, 90, 40},
+    {210, screenHeight - 50, 90, 40}};
 
 // Boutons on the right {random, pattern et clear }
 Rectangle rightButtons[3] = {
-    {screenWidth - 270, screenHeight - 50, 80, 40},
-    {screenWidth - 180, screenHeight - 50, 80, 40},
-    {screenWidth - 90, screenHeight - 50, 80, 40}};
+    {screenWidth - 300, screenHeight - 50, 90, 40},
+    {screenWidth - 200, screenHeight - 50, 90, 40},
+    {screenWidth - 100, screenHeight - 50, 90, 40}};
 
-bool isPlay = false;
-int frameCount = -1;
+// Rectangle centerButtons[2] = {
+//     {screenWidth - 360,screenHeight - 50, 90, 40},
+//     {screenWidth - 450, screenHeight - 50, 90, 40}};
 
 int main()
 {
     InitWindow(screenWidth, screenHeight, "Game of Life - ORTHLY");
-    SetTargetFPS(60);
+    SetTargetFPS(UpdatePerSecond);
     while (!WindowShouldClose())
     {
         if (isPlay || frameCount == 0)
