@@ -14,17 +14,16 @@ int main()
 {
     InitWindow(screenWidth, screenHeight, "Game of Life - ORTHLY");
     SetTargetFPS(60);
-    initializeRandomGame();
+    // initializeRandomGame();
     while (!WindowShouldClose())
     {
         if (isPlay || frameCount == 0)
         {
-            updateGame;
-            frameCount--;
+            updateGame();
+            frameCount = -1;
         }
         BeginDrawing();
         drawGame();
-        // DrawFPS(10,10);
         EndDrawing();
     }
 
