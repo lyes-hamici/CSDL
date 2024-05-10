@@ -73,13 +73,13 @@ int main()
         }
         if (IsKeyPressed(KEY_RIGHT))
         {
-            UpdatesPerSecond = std::min(UpdatesPerSecond + 10, 120);
+            UpdatesPerSecond = std::min(UpdatesPerSecond + 5, 120);
             SetTargetFPS(UpdatesPerSecond);
         }
 
         if (IsKeyPressed(KEY_LEFT))
         {
-            UpdatesPerSecond = std::max(UpdatesPerSecond - 10, 1);
+            UpdatesPerSecond = std::max(UpdatesPerSecond - 5, 1);
             SetTargetFPS(UpdatesPerSecond);
         }
 
