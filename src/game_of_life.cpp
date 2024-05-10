@@ -75,7 +75,7 @@ void initializePatternGame()
  */
 void updateGame()
 {
-    // Update your game state here based on the rules of the Game of Life
+    initializeRandomGame();
 }
 
 /**
