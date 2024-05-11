@@ -43,7 +43,13 @@ int main()
         {
         case SCENE_FILE:
             drawFileManager();
-            // currentScene = SCENE_GAMEPLAY;
+            if (selectedFileName != "")
+            {
+                std::cout << selectedFileName << std::endl;
+                currentScene = SCENE_GAMEPLAY;
+                initializePatternGame(selectedFileName);
+                selectedFileName = "";
+            }
             break;
         case SCENE_GAMEPLAY:
 

@@ -6,7 +6,7 @@
 
 namespace fs = std::filesystem;
 
-std::string SelectedFileName = "";
+std::string selectedFileName = "";
 std::vector<std::string> files;
 size_t selectedFileIndex = 0;
 
@@ -24,15 +24,15 @@ void loadFilesFromDirectory(const std::string &directoryPath)
 
 void drawFileManager()
 {
-    ClearBackground(RED);
+    ClearBackground(BLACK);
     // Draw files
     for (size_t i = 0; i < files.size(); i++) // Change type to size_t
     {
         if (i == selectedFileIndex)
         {
-            DrawText(">", 10, 10 + 20 * i, 20, BLACK);
+            DrawText(">", 10, 10 + 20 * i, 20, WHITE);
         }
-        DrawText(files[i].c_str(), 30, 10 + 20 * i, 20, BLACK);
+        DrawText(files[i].c_str(), 30, 10 + 20 * i, 20, WHITE);
     }
 
     // Handle input
@@ -48,7 +48,7 @@ void drawFileManager()
     }
     if (IsKeyPressed(KEY_ENTER))
     {
-        SelectedFileName = files[selectedFileIndex];
-        // Change scene here
+        selectedFileName = files[selectedFileIndex];
+        std::cout << selectedFileName << std::endl;
     }
 }

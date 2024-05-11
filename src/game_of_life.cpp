@@ -1,4 +1,5 @@
 #include <raylib.h>
+#include <iostream>
 #include "game_of_life.hpp"
 #include "pattern_manager.hpp"
 #include <cstdlib>
@@ -46,12 +47,13 @@ void initializeRandomGame()
  *
  * This function initializes the game by setting up the initial state of the grid with a pattern stored into a txt file.
  */
-void initializePatternGame(const std::string &filepath)
+void initializePatternGame(const std::string &fileName)
 {
 
     // Reseting the grid
     resetGrid();
-
+    std::string filepath = "./patterns/" + fileName;
+    std::cout << fileName << filepath << std::endl;
     std::vector<std::vector<bool>> pattern = readPattern(filepath); // Return a 2D vector
 
     int centerRow = rows / 2;
