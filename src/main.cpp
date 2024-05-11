@@ -45,7 +45,7 @@ int main()
             drawFileManager();
             if (selectedFileName != "")
             {
-                std::cout << selectedFileName << std::endl;
+                UpdatesPerSecond = 60;
                 currentScene = SCENE_GAMEPLAY;
                 initializePatternGame(selectedFileName);
                 selectedFileName = "";
@@ -86,6 +86,7 @@ int main()
                     }
                     else if (i == 1) // Pattern load
                     {
+                        UpdatesPerSecond = 120;
                         currentScene = SCENE_FILE;
                     }
                     else if (i == 2) // Clear grid
