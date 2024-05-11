@@ -9,7 +9,6 @@ namespace fs = std::filesystem;
 std::string selectedFileName = "";
 std::vector<std::string> files;
 size_t selectedFileIndex = 0;
-
 void loadFilesFromDirectory(const std::string &directoryPath)
 {
     files.clear();
