@@ -11,6 +11,7 @@ void resetGrid();
 void initializeRandomGame();
 void initializePatternGame(const std::string &filePath);
 void updateGame();
+void reverseUpdate();
 void drawGame();
 void drawGrid();
 void drawCell();
