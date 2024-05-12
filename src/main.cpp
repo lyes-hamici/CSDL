@@ -1,4 +1,3 @@
-#include <raylib.h>
 #include "game_of_life.hpp"
 #include "file_manager.hpp"
 #include <iostream>
@@ -100,6 +99,7 @@ int main()
                     }
                 }
             }
+
             if (IsKeyPressed(KEY_RIGHT))
             {
                 UpdatesPerSecond = std::min(UpdatesPerSecond + 5, 120);
@@ -114,6 +114,15 @@ int main()
             {
                 savePattern();
             }
+            else if (IsMouseButtonDown(MOUSE_LEFT_BUTTON))
+            {
+                drawOnGrid(GetMousePosition(), true);
+            }
+            else if (IsMouseButtonDown(MOUSE_RIGHT_BUTTON))
+            {
+                drawOnGrid(GetMousePosition(), false);
+            }
+            
             
 
             BeginDrawing();

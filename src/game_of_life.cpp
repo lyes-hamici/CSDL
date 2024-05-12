@@ -1,4 +1,3 @@
-#include <raylib.h>
 #include <iostream>
 #include "game_of_life.hpp"
 #include "pattern_manager.hpp"
@@ -78,6 +77,24 @@ void initializePatternGame(const std::string &filePath)
 void updateGame() {
     bool new_grid[80][80] = {0}; // Initialize new grid with all zeros
     updateMatrice(grid, new_grid);
+}
+
+void drawOnGrid(Vector2 mousePosition, bool draw)
+{
+    int column = mousePosition.x / cell_size;
+    int row = mousePosition.y / cell_size;
+
+    if (row >= 0 && row < rows && column >= 0 && column < columns)
+    {
+        if (draw)
+        {
+            grid[row][column] = 1;
+        }
+        else
+        {
+            grid[row][column] = 0;
+        }
+    }
 }
 
 /**
