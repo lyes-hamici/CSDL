@@ -36,7 +36,6 @@ int main()
 {
     InitWindow(screenWidth, screenHeight, "Game of Life - ORTHLY");
     SetTargetFPS(UpdatesPerSecond);
-    loadFilesFromDirectory("./patterns");
      while (!WindowShouldClose())
     {
         switch (currentScene)
@@ -86,6 +85,7 @@ int main()
                     }
                     else if (i == 1) // Pattern load
                     {
+                        loadFilesFromDirectory("./patterns");
                         UpdatesPerSecond = 120;
                         currentScene = SCENE_FILE;
                     }
@@ -100,12 +100,16 @@ int main()
                 UpdatesPerSecond = std::min(UpdatesPerSecond + 5, 120);
                 SetTargetFPS(UpdatesPerSecond);
             }
-
-            if (IsKeyPressed(KEY_LEFT))
+            else if (IsKeyPressed(KEY_LEFT))
             {
                 UpdatesPerSecond = std::max(UpdatesPerSecond - 5, 1);
                 SetTargetFPS(UpdatesPerSecond);
             }
+            else if (IsKeyPressed(KEY_S))
+            {
+                savePattern();
+            }
+            
 
             BeginDrawing();
             ClearBackground(RAYWHITE);

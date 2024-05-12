@@ -122,3 +122,8 @@ void drawCell()
         }
     }
 }
+
+void savePattern()
+{
+    writePattern(grid);
+}

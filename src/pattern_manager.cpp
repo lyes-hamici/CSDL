@@ -1,6 +1,7 @@
 #include "pattern_manager.hpp"
 #include <fstream>
 #include <iostream>
+#include <random>
 
 std::vector<std::vector<bool>> readPattern(const std::string &filename)
 {
@@ -22,17 +23,40 @@ std::vector<std::vector<bool>> readPattern(const std::string &filename)
     return pattern;
 }
 
-void writePattern(const std::string &filename, const std::vector<std::vector<bool>> &pattern)
+void writePattern(const bool grid[80][80])
 {
+    std::string filename = randomFileName();
+
+    while (fileExists(filename))
+    {
+        filename = randomFileName();
+    }
+
     std::ofstream file(filename);
 
-    // Write the pattern to the file
-    for (const auto &row : pattern)
+    for (int i = 0; i < 80; i++)
     {
-        for (bool cell : row)
+        for (int j = 0; j < 80; j++)
         {
-            file << (cell ? '1' : '0');
+            file << (grid[i][j] ? '1' : '0');
         }
         file << '\n';
     }
+}
+
+std::string randomFileName()
+{
+    std::string filename = "./patterns/user/file";
+    std::random_device rd;
+    std::mt19937 generator(rd());
+    std::uniform_int_distribution<> distribution(1000, 9999);
+    filename += std::to_string(distribution(generator));
+    filename += ".txt";
+    return filename;
+}
+
+bool fileExists(const std::string &filename)
+{
+    std::ifstream file(filename);
+    return file.good();
 }

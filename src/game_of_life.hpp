@@ -14,5 +14,6 @@ void updateGame();
 void drawGame();
 void drawGrid();
 void drawCell();
+void savePattern();
 
 #endif
