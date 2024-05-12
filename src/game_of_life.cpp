@@ -2,6 +2,7 @@
 #include <iostream>
 #include "game_of_life.hpp"
 #include "pattern_manager.hpp"
+#include "algorithme.hpp"
 #include <cstdlib>
 
 // Game Variables
@@ -75,9 +76,9 @@ void initializePatternGame(const std::string &fileName)
  *
  * This function updates the grid state based on the rules of the Game of Life.
  */
-void updateGame()
-{
-    initializeRandomGame(); // Erase this, this is completly for test purposes
+void updateGame() {
+    bool new_grid[80][80] = {0}; // Initialize new grid with all zeros
+    updateMatrice(rows, columns, grid, new_grid);
 }
 
 /**
