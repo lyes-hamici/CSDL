@@ -42,6 +42,11 @@ int main()
         {
         case SCENE_FILE:
             drawFileManager();
+            if (IsKeyPressed(KEY_BACKSPACE))
+            {
+                UpdatesPerSecond = 60;
+                currentScene = SCENE_GAMEPLAY;
+            }
             if (selectedFileName != "")
             {
                 UpdatesPerSecond = 60;
@@ -85,7 +90,7 @@ int main()
                     }
                     else if (i == 1) // Pattern load
                     {
-                        loadFilesFromDirectory("./patterns");
+                        loadFilesFromDirectory("./patterns", "./patterns/user");
                         UpdatesPerSecond = 120;
                         currentScene = SCENE_FILE;
                     }
