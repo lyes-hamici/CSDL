@@ -1,11 +1,11 @@
 #include "algorithme.hpp"
 #include "game_of_life.hpp"
 
-#include <vector>
 #include <iostream>
 #include <string>
 
-void check_neihbourg(int x, int y, int rows, int columns, bool grid[80][80], bool new_grid[80][80]) {
+void check_neihbourg(int x, int y, bool grid[rows][columns], bool new_grid[rows][columns])
+{
     int count = 0;
     for (int i = -1; i < 2; i++) {
         for (int j = -1; j < 2; j++) {
@@ -32,25 +32,24 @@ void check_neihbourg(int x, int y, int rows, int columns, bool grid[80][80], boo
     }
 }
 
-void updateMatrice(int rows, int columns, bool grid[80][80], bool new_grid[80][80]) {
+void updateMatrice(bool grid[rows][columns], bool new_grid[rows][columns])
+{
     for (int i = 0; i < rows; i++) {
         for (int j = 0; j < columns; j++) {
-            check_neihbourg(i, j, rows, columns, grid, new_grid);
+            check_neihbourg(i, j, grid, new_grid);
         }
     }
-    std::cout << "old grid: " << std::endl;
-    for (int i = 0; i < rows; i++) {
-        for (int j = 0; j < columns; j++) {
-            std::cout << grid[i][j] << " ";
+    // Putting new_grid into grid()
+   copyGrid(grid, new_grid);
+}
+
+void copyGrid(bool grid[rows][columns], bool new_grid[rows][columns])
+{
+    for (int i = 0; i < rows; i++)
+    {
+        for (int j = 0; j < columns; j++)
+        {
+            grid[i][j] = new_grid[i][j];
         }
-        std::cout << std::endl;
-    }
-    grid = new_grid;
-    std::cout << "new grid: " << std::endl;
-    for (int i = 0; i < rows; i++) {
-        for (int j = 0; j < columns; j++) {
-            std::cout << grid[i][j] << " ";
-        }
-        std::cout << std::endl;
     }
 }

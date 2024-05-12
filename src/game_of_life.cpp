@@ -78,7 +78,7 @@ void initializePatternGame(const std::string &fileName)
  */
 void updateGame() {
     bool new_grid[80][80] = {0}; // Initialize new grid with all zeros
-    updateMatrice(rows, columns, grid, new_grid);
+    updateMatrice(grid, new_grid);
 }
 
 /**
