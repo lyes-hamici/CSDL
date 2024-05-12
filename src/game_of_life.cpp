@@ -2,7 +2,7 @@
 #include <iostream>
 #include "game_of_life.hpp"
 #include "pattern_manager.hpp"
-#include "algorithme.hpp"
+#include "algorithm.hpp"
 #include <cstdlib>
 
 // Game Variables

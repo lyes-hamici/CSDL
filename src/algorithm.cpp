@@ -1,4 +1,4 @@
-#include "algorithme.hpp"
+#include "algorithm.hpp"
 #include "game_of_life.hpp"
 
 #include <iostream>
