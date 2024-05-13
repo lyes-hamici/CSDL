@@ -5,6 +5,8 @@
 #include <string>
 
 std::vector<std::vector<bool>> readPattern(const std::string &filename);
-void writePattern(const std::vector<std::vector<bool>> &pattern);
+void writePattern(const bool grid[80][80]);
+std::string randomFileName();
+bool fileExists(const std::string &filename);
 
 #endif

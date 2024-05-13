@@ -1,4 +1,3 @@
-#include <raylib.h>
 #include "game_of_life.hpp"
 #include "file_manager.hpp"
 #include <iostream>
@@ -36,13 +35,17 @@ int main()
 {
     InitWindow(screenWidth, screenHeight, "Game of Life - ORTHLY");
     SetTargetFPS(UpdatesPerSecond);
-    loadFilesFromDirectory("./patterns");
      while (!WindowShouldClose())
     {
         switch (currentScene)
         {
         case SCENE_FILE:
             drawFileManager();
+            if (IsKeyPressed(KEY_BACKSPACE))
+            {
+                UpdatesPerSecond = 60;
+                currentScene = SCENE_GAMEPLAY;
+            }
             if (selectedFileName != "")
             {
                 UpdatesPerSecond = 60;
@@ -86,6 +89,7 @@ int main()
                     }
                     else if (i == 1) // Pattern load
                     {
+                        loadFilesFromDirectory("./patterns", "./patterns/user");
                         UpdatesPerSecond = 120;
                         currentScene = SCENE_FILE;
                     }
@@ -95,17 +99,31 @@ int main()
                     }
                 }
             }
+
             if (IsKeyPressed(KEY_RIGHT))
             {
                 UpdatesPerSecond = std::min(UpdatesPerSecond + 5, 120);
                 SetTargetFPS(UpdatesPerSecond);
             }
-
-            if (IsKeyPressed(KEY_LEFT))
+            else if (IsKeyPressed(KEY_LEFT))
             {
                 UpdatesPerSecond = std::max(UpdatesPerSecond - 5, 1);
                 SetTargetFPS(UpdatesPerSecond);
             }
+            else if (IsKeyPressed(KEY_S))
+            {
+                savePattern();
+            }
+            else if (IsMouseButtonDown(MOUSE_LEFT_BUTTON))
+            {
+                drawOnGrid(GetMousePosition(), true);
+            }
+            else if (IsMouseButtonDown(MOUSE_RIGHT_BUTTON))
+            {
+                drawOnGrid(GetMousePosition(), false);
+            }
+            
+            
 
             BeginDrawing();
             ClearBackground(RAYWHITE);

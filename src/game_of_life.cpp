@@ -1,4 +1,3 @@
-#include <raylib.h>
 #include <iostream>
 #include "game_of_life.hpp"
 #include "pattern_manager.hpp"
@@ -48,14 +47,13 @@ void initializeRandomGame()
  *
  * This function initializes the game by setting up the initial state of the grid with a pattern stored into a txt file.
  */
-void initializePatternGame(const std::string &fileName)
+void initializePatternGame(const std::string &filePath)
 {
 
     // Reseting the grid
+    std::cout << filePath << std::endl;
     resetGrid();
-    std::string filepath = "./patterns/" + fileName;
-    std::cout << fileName << filepath << std::endl;
-    std::vector<std::vector<bool>> pattern = readPattern(filepath); // Return a 2D vector
+    std::vector<std::vector<bool>> pattern = readPattern(filePath); // Return a 2D vector
 
     int centerRow = rows / 2;
     int centerColumn = columns / 2;
@@ -79,6 +77,24 @@ void initializePatternGame(const std::string &fileName)
 void updateGame() {
     bool new_grid[80][80] = {0}; // Initialize new grid with all zeros
     updateMatrice(grid, new_grid);
+}
+
+void drawOnGrid(Vector2 mousePosition, bool draw)
+{
+    int column = mousePosition.x / cell_size;
+    int row = mousePosition.y / cell_size;
+
+    if (row >= 0 && row < rows && column >= 0 && column < columns)
+    {
+        if (draw)
+        {
+            grid[row][column] = 1;
+        }
+        else
+        {
+            grid[row][column] = 0;
+        }
+    }
 }
 
 /**
@@ -121,4 +137,9 @@ void drawCell()
             }
         }
     }
+}
+
+void savePattern()
+{
+    writePattern(grid);
 }
